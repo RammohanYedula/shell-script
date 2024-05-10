@@ -12,7 +12,7 @@
 
 #########
 
-DATE=$(date %F)
+DATE=$(date +%F)
 LOGSDIR=/home/centos/shellscript-logs
 SCRIPT_NAME=$0
 LOGFILE=$LOGSDIR/$0-$DATE.log
@@ -45,7 +45,7 @@ VALIDATE(){
 for i in $@
 do 
     yum list installed $i 
-    if [ $? -ne 0]
+    if [ $? -ne 0 ]
     then
         echo "$i is not installed, lets install it"
         yum install $i -y &>>$LOGFILE
